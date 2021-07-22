@@ -1,0 +1,131 @@
+# System Structure & Program Execution 2
+
+> 운영체제 공부에 앞서 하드웨어와 프로그램의 구동 방식에 대한 학습 진행
+
+[TOC]
+
+## 지난 시간 복습
+
+![컴퓨터시스템구조](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\컴퓨터시스템구조.png)
+
+- CPU / Memory : 컴퓨터(host)
+- I/O device : 데이터 입출력 담당
+- device controller : I/O 디바이스로 데이터를 읽거나 쓸 때 local buffer에 데이터 저장, CPU에게는 interrupt를 걸어 소식 전달
+- instruction을 실행하기 전 interrupt를 확인하고 interrupt가 있다면 운영체제한테 시스템 제어권을 넘김
+- mode bit에 따라 instruction 실행 여부 변경(0=모든 instrcuction 가능 / 1=한정됨(보안상의 목적))
+- I/O 디바이스 작업은 mode bit==0일 때만 가능(서비스 요청시 시스템콜 => 의도적으로 interrupt line 세팅 cf)트랩)
+- CPU 독차지 방지를 위해 타이머를 통한 interrupt 세팅 가능
+
+
+
+#### 동기식 입출력과 비동기식 입출력
+
+![동기식입출력](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\동기식입출력.png)
+
+![동기식입출력그림](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\동기식입출력그림.png)
+
+- Synchronous 입출력(동기식 입출력)
+
+  > I/O 요청 후 입출력 작업이 완료된 후에 제어권이 사용자 프로그램에 넘어가는 방식
+
+  I/O요청은 주로 오래걸리는 작업 -> CPU 낭비를 막기 위해 동기식 입출력에 대한 구현 방법
+
+  - 구현방법 1
+
+    I/O가 끝날때 까지 CPU를 낭비시킴
+    매시점 하나의 I/O만 일어날 수 있음
+
+  - 구현방법 2
+
+    I/O가 완료될때까지 해당 프로그램에게서 CPU를 빼앗음
+    I/O처리를 기다리는 줄에 그 프로그램을 줄 세움
+    다른 프로그램에게 CPU를 줌
+
+- Asynchronous 입출력(비동기식 입출력)
+
+  > I/O가 시작된 후 입출력 작업이 끝나기를 기다리지 않고 제어가 사용자 프로그램에 즉시 넘어감
+
+  
+
+#### DMA
+
+> for문, while문과 같은 이유로 무한루프에 빠지게 되면 CPU가 하나의 프로그램에 갇힐 수 있다.
+>
+> 타이머는 제한 시간을 설정해 특정 프로그램이 CPU를 독점하는 것을 방지하여 위와 같은 현상을 막는다.
+
+- 메모리에 접근할 수 있는 장치
+- CPU 작업 중 세팅 시간 오버시 타이머가 Interrupt를 보내 CPU의 제어권을 프로그램에서 운영체제로 이동하게 만든다. 운영체제는 타이머를 재설정하고 다음 프로그램에게 CPU를 보내주는 작업을 반복한다.
+- 버퍼에 특정 크기가 쌓이면 CPU한테 한 번에 알려줌
+- time sharing 목적
+
+
+
+#### 서로 다른 입출력 명령어
+
+![서로다른입출력](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\서로다른입출력.png)
+
+- 메모리만 접근해야 하는 instruction vs. I/O 디바이스에만 접근해야 하는 instruction
+
+  -> 일반적인 구조
+
+- but, *오른쪽과 같은 구조는 I/O 디바이스를 메모리 주소에 연장주소로 연결하여 사용하는 구조(확인 필요..🚫)
+
+
+
+#### 저장장치 계층 구조
+
+![저장장치](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\저장장치.png)
+
+- 위로 갈수록 속도 up && 용량 down
+- Secondary : 비휘발성(CPU 직접 접근 불가능) / Primary : 휘발성(CPU 직접 접근 가능)
+- 캐싱: 재사용을 위해 밑에서 읽어온 것을 임시로 저장하는 것
+
+
+
+#### 프로그램의 실행(메모리 load)
+
+![프로그램실행_메모리](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\프로그램실행_메모리.png)
+
+![프로그램실행_메모리2](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\프로그램실행_메모리2.png)
+
+- 프로그램 실행 -> 독자적 address space(주소 공간) 발생 (버추얼 메모리)
+- 주소 공간은 코드 / 데이터(자료 구조) / 스택을 담고 있음
+- 위를 물리적인 메모리에 올려 실행(낭비 제거를 위해 당장 필요한 부분만 메모리에 올림)
+- 스와핑: 메인 메모리의 연장선으로 하드디스크 사용
+- File system은 비휘발성, Physical memory && Swap area는 휘발성
+- cf) 주소 변환은 하드웨의 지원을 받아 논리적 메모리 주소를 물리적 메모리 주소로 바꾸는 작업
+
+
+
+#### 커널 주소 공간의 내용
+
+![커널주소공간의내용](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\커널주소공간의내용.png)
+
+​			*PCB : process control block
+
+
+
+#### 사용자 프로그램이 사용하는 함수
+
+- 사용자 정의 함수
+
+  > 자신의 프로그램에서 정의한 함수
+
+- 라이브러리 함수
+
+  > 자신의 프로그램에서 정의하지 않고 갖다 쓴 함수(프로그램 실행 파일에 포함되어 있음)
+
+- 커널 함수
+
+  > 운영에제 프로그램 함수
+  >
+  > 커널 함수의 호출 = 시스템 콜
+  >
+  > *커널 함수 : 버추얼(논리적) 메모리 상에서 jump 필요 -> 시스템 콜을 통해 interrupt 발생 -> 시스템 제어권을 넘겨서 실행
+
+
+
+#### 프로그램의 실행
+
+![프로그램의실행](C:\Users\multicampus\Desktop\CS-Study\이덕배\운영체제\01. System Structure & Program Execution\assets\프로그램의실행.png)
+
