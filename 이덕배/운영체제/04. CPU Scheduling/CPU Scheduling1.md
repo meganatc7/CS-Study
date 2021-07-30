@@ -2,7 +2,7 @@
 
 [TOC]
 
-## CPU Scheduling 개념 및 지난 시간 복습
+## 📑 CPU Scheduling 개념 및 지난 시간 복습
 
 ![bursts](assets\bursts.png)
 
@@ -125,8 +125,52 @@
     - t : 실제 CPU 사용 시간 / 타우(τ) : CPU 예측 사용 시간
 
       <hr>
+  <img src="assets\공식.png" alt="공식" style="zoom:150%;" />
+      
+- 계산 결과 => 현재를 기준으로 최근의 가중치를 높게 반영하여 계산
 
-      <img src="assets\공식.png" alt="공식" style="zoom:150%;" />
 
-    - 계산 결과 => 현재를 기준으로 최근의 가중치를 높게 반영하여 계산
 
+##### Priority Scheduling
+
+> 우선 순위 스케줄링(우선 순위가 높은 프로세스에게 CPU 할당)
+
+![우선순위](assets\우선순위.png)
+
+- preemptive(더 높은 우선 순위의 프로세스 등장 시 CPU 재할당) / nonpreemptive(현재 실행 중인 프로세스에게 CPU보장) 방법 둘 다 가능
+- 리눅스와 같은 대부분의 운영체제에서 작은 숫자일 수록 높은 우선 순위를 지님
+- FJS 역시 우선 순위 스케줄링의 일종(CPU 사용 시간으로 우선 순위 결정)
+- Starving 발생 가능 => Aging(노화) 사용: 우선 순위가 낮은 프로세스라도 오랜 시간 기다렸다면 우선 순위를 높여줌
+
+
+
+##### Round Robin(RR)
+
+![Round Robin](assets\rr.png)
+
+- 현대적인 컴퓨터 시스템은 RR에 기반
+
+- CPU를 줄 때 할당 시간을 세팅해서 주고, 할당 시간을 넘기면 time interrupt를 발생시켜 CPU를 재할당 시키는 것도 RR 스케줄링에 기반(선점형)
+
+- ==응답 시간(Response time)==을 빠르게 만들어줌(조금씩 시간을 줬다 뺐었다)
+
+- CPU 사용 시간이 긴 프로세스는 긴 대기 시간을, 짧은 프로그램은 짧은 대기시간을 가짐
+
+  ==대기 시간이 본인의 CPU 사용 시간에 비례==
+
+- 극단적인 예시
+
+  - 할당 시간이 매우 큰 경우 : ==FCFS==와 같은 역할
+  - 할당 시간이 매우 작은 경우 : 빈번한 ==context switch 발생 -> overhead 발생==
+
+- ![Round Robin](assets\ex.rr.png)
+
+  - RR은 SJF보다 ==average turnaround time/대기 시간은 길지만 응답 시간은 더 짧음==
+
+  - CPU 사용 시간이 무분별하거나 모를 경우 사용하기 좋은 방법
+
+    CPU 사용 시간이 모두 동이할 경우 좋지 않음(거의 동시에 모든 프로세스 종료 => 하나씩 실행시키면 순차적으로 빠르게 종료)
+
+- ![Round Robin](assets\ex.rr(2).png)
+
+  - cf. 위는 헤테로 지니어스들로 이루어진 문제로 RR에 호의적인 예제는 아니다
