@@ -1,3 +1,7 @@
+
+
+
+
 # CPU Scheduling 2
 
 [toc]
@@ -134,3 +138,83 @@
   - 유저 레벨 스레드(운영 체제가 스레드의 존재를 모름, 사용자가 직접 관리)에서 운영체제는 프로세스에게 CPU를 줄 지 말지만 결정하고, 그 프로세스에 CPU가 갔을 때 어떤 thread에게  CPU를 줄 지는 로컬에서 결정(os가 아니라 사용자 프로세스가 직접 결정)
 - Global Scheduling
   - 커널 스레드(운영 체제가 스레드의 존재를 알고 있음)에서 운영 체제가 프로세스 스케줄링 하듯 어떤 스레드에게 CPU를 줄지 결정
+
+
+
+
+
+### Algorithm Evaluation
+
+어떤 알고리즘이 좋은지 평가할 수 있는 방법
+
+![image-20210802183100336](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210802183100336.png)
+
+1. Queueing models(이론적인 방법)
+
+   - 이론적인 방법
+   - arrival rate(도착률) && service rate(처리율) 등을 계산하여 throughput(처리율, 단위시간당 몇개 처리했는지), 평균적으로 얼마나 기다렸는지를 계산
+2. Implementation(구현) & Measurement(성능 측정)
+   - 1번과 상반된 개념으로 실제 시스템에다 구현해보고 측정
+3. Simulation(모의 실험)
+   - 위의 경우를 직접해보기 어려운 경우
+   - 모의 프로그램(예제)를 만들어서 돌려보기
+   - trace : input 데이터(실제 프로그램을 돌리며 데이터를 뽑아볼 수도 있음 or 가정)
+
+
+
+### Process Synchronization
+
+##### 데이터의 접근
+
+![image-20210804002731122](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804002731122.png)
+
+- 데이터는 자신이 저장된 곳에서 값을 가져와 연산하고 다시 결과를 저장하는 등의 과정 수행
+- 데이터에 대해 연산, 수정, 결과 저장 등을 진행하는데 프로세스에 따라 그 결과값들이 달라질 수 있음 => system Synchronization
+
+<hr>
+
+![image-20210804002913962](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804002913962.png)
+
+-  cpu가 여러 개인 경우 각  CPU가 다른 연산을 진행하여 원치 않는 결과가 발생할 수 있음
+
+
+
+##### race condition
+
+여러 주체가 하나의 데이터에 접근하는 것
+
+![image-20210804003648823](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804003648823.png)
+
+
+
+##### 해결 방법
+
+1. 운영체제 커널이 실행 중일 경우 interrupt를 disabled 처리(커널 명령어가 끝날 때까지 보장)
+
+![image-20210804003700168](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804003700168.png)
+
+2. 커널 모드 중에는 CPU를 preempt하지 않음(시간을 조금 더 쓰더라도 빼앗지 않는다.)
+
+![image-20210804003953042](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804003953042.png)
+
+![image-20210804004006658](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804004006658.png)
+
+3. CPU가 여러 개 있는 경우에는 lock 사용 
+   - 개별 데이터에 대해 lock 걸기
+   - CPU 전체에 대한 lock 걸기(비효율적)
+
+![image-20210804004342409](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804004342409.png)
+
+<hr>
+
+![image-20210804004427071](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804004427071.png)
+
+
+
+##### Critical-section❗📑(공부 더 필요!)
+
+공유 데이터를 접근하는 코드
+
+![image-20210804004646414](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804004646414.png)
+
+![image-20210804004717763](C:\Users\multicampus\AppData\Roaming\Typora\typora-user-images\image-20210804004717763.png)
