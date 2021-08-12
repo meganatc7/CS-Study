@@ -4,7 +4,7 @@
 
 ## Critical section
 
-![critical section](assets\01\critical section.png)
+![critical section](assets/01/critical section.png)
 
 - **임계 구역**(critical section) 또는 **공유변수 영역**: 병렬컴퓨팅에서 둘 이상의 스레드가 동시에 접근해서는 안되는 공유 자원(자료 구조 또는 장치)을 접근하는 코드의 일부
 - 두 개의 프로세스가 동시에 접근하지 않도록 만들기 위해 공유 데이터 접근 이전에 entry section을 통해 lock을 걸어 동시 접근을 막음
@@ -13,7 +13,7 @@
 
 ## 충족 조건
 
-![충족조건](assets\01\충족조건.png)
+![충족조건](assets/01/충족조건.png)
 
 1. Mutual Exclusion(상호 배제)
 
@@ -35,7 +35,7 @@
 
 ### Algo1
 
-![algo1](assets\01\algo1.png)
+![algo1](assets/01/algo1.png)
 
 - turn : 누구 차례인지를 말해주는 변수
 - 본인의 차례가 아닌 경우 while 문에 들어가 대기 / 상대방에 critical section에서 나오면(차례를 바꿔줌) critical section에 들어갔다가 수행 후 턴을 바꿈
@@ -45,7 +45,7 @@
 
 ### Algo2
 
-![algo2](assets\01\algo2.png)
+![algo2](assets/01/algo2.png)
 
 - flag : 각각의 프로세스가 가지는 변수로, 본인이 critical section에 들어가고자 하는 의사표시
 - 상대방이 의사를 가지고 있다면 양보하는 방식
@@ -55,7 +55,7 @@
 
 ### Algo3
 
-![algo3](assets\01\algo3.png)
+![algo3](assets/01/algo3.png)
 
 - turn과 flag 변수 모두 사용
 - 상대방이 의사도 있고 상대방 차례일 경우에만 기다림 -> 둘 중 하나라도 미충족시 내가 들어감
@@ -66,7 +66,7 @@
 
 ### Synchronization Hardware❓❓❓
 
-![hardware](assets\01\hardware.png)
+![hardware](assets/01/hardware.png)
 
 - 하드웨어적으로 하나의 instruction이 제공되면 위의 과정이 수월해질 수 있음
 - 어떤 데이터를 읽고 쓰는 걸 하나의 instruction으로 처리할 수 없기에 CPU를 빼앗는 문제를 간단히 해결 가능
@@ -77,6 +77,6 @@
 
 cf) ❓❓❓
 
- ![semaphores](assets\01\semaphores.png)
+ ![semaphores](assets/01/semaphores.png)
 
 - 프로그래머 입장에서 연산을 통해 lock을 걸고 푸는 걸 지원

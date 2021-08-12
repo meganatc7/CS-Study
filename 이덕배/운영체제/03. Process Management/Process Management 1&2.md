@@ -6,7 +6,7 @@
 
 #### 프로세스 생성 
 
-![프로세스생성](assets\프로세스생성.png)
+![프로세스생성](assets/프로세스생성.png)
 
 - 부모 프로세스가 복제 형태를 통해 자식 프로세스 생성
 - 부모 프로세스는 여러 명의 자식 프로세스를 생성할 수 있음 => 트리 형태로 발전
@@ -14,7 +14,7 @@
 
 <hr>
 
-![프로세스생성(2)](assets\프로세스생성(2).png)
+![프로세스생성(2)](assets/프로세스생성(2).png)
 
 - 자식 프로세스는 부모 프로세스의 주소 공간과 운영 체제 데이터(PCB 혹은 자원), CPU 문맥((프로그램 카운터) 등을 똑같이 복제한다(fork() 시스템 콜)
 - 리눅스나 효울적인 운영체제에서는 카피 전에 공유할 수 있는 주소 공간과 자원같은 경우는 공유하고 프로그램 카운터만 카피하여 내용이 바뀔 때 복제하는 방식을 사용
@@ -25,7 +25,7 @@
 
 #### 프로세스 종료
 
-![프로세스종료](assets\프로세스종료.png)
+![프로세스종료](assets/프로세스종료.png)
 
 - exit()은 프로세스의 종료로 자식의 경우 부모한테 데이터를 보냄
 - 프로세스에서는 자식이 부모보다 우선적으로 죽어야 함
@@ -35,14 +35,14 @@
 
 #### fork() 시스템 콜
 
-![fork](assets\fork.png)
+![fork](assets/fork.png)
 
 - 위는 C언어 코드
 - 원본 구분을 위해  pid를 사용해 부모(양수) / 자식(0)을 사용
 
 <hr>
 
-![fork(2)](assets\fork(2).png)
+![fork(2)](assets/fork(2).png)
 
 - 부모가 포크해서 자식이 생기면 자식은 ==메인부터가 아닌 포크 시점부터 실행==(처음부터 X, 문맥 복제)
 
@@ -50,7 +50,7 @@
 
 #### exec()시스템 콜
 
-![exec](assets\exec.png)
+![exec](assets/exec.png)
 
 - exec() : 새로운 프로세스로 태어나게 해줌
 
@@ -64,13 +64,13 @@
 
   execip("`프로그램 이름` ", "`프로그램 이름`",  arguments, (char*) 0 ) 구조
 
-  ![exec(2)](assets\exec(2).png)
+  ![exec(2)](assets/exec(2).png)
 
 
 
 #### wait() 시스템 콜
 
-![wait](assets\wait.png)
+![wait](assets/wait.png)
 
 - wait() : 시스템을 잠들게 하는 것(block 상태)
 - 자식 프로세스의 종료를 기다리며 block 상태가 된다. -> 자식 프로세스 종료 후에는 ready 상태
@@ -81,7 +81,7 @@
 
 #### exit() 시스템 콜
 
-![exit](assets\exit.png)
+![exit](assets/exit.png)
 
 - exit() 시스템 콜은 종료 시스템 콜
 - 자발적 종료에 주로 호출
@@ -91,7 +91,7 @@
 
 #### 프로세스 관련 시스템 콜 정리
 
-![프로세스시스템콜](assets\시스템콜.png)
+![프로세스시스템콜](assets/시스템콜.png)
 
 - fork() : 복제 생성
 - exec() : 새로운 프로그램으로 덮어씌움
@@ -102,7 +102,7 @@
 
 #### 프로세스 간 협력
 
-![프로세스 간 협력](assets\협력.png)
+![프로세스 간 협력](assets/협력.png)
 
 - 원칙적으로 프로세스는 독립적인 존재로 다른 프로세스 수행에 영향을 미치지 못함
 
@@ -110,7 +110,7 @@
 
 - IPC(프로세스 간 협력 메커니즘)
 
-  ![interprocess communication](assets\IC.png)
+  ![interprocess communication](assets/IC.png)
 
   - message passing : 커널을 통해(직접 전달 불가) 서로 메시지를 주고 받으며 실행
 
@@ -127,7 +127,7 @@
 
 #### 프로세스 실행 과정
 
-![프로그램 실행 과정](assets\cpu과정.png)
+![프로그램 실행 과정](assets/cpu과정.png)
 
 - 프로세스는 위와 같은 path를 따라 실행
 - 프로세스(프로그램)은 CPU burst와 I/) burst의 연속
@@ -137,19 +137,19 @@
 
 #### I/O bound job vs. CPU bound job
 
-![Bursts](assets\burst.png)
+![Bursts](assets/burst.png)
 
 - I/O bound job : CPU를 짧게 쓰고 I/O가 끼어드는 작업(사람과 함께하는 작업)
 - CPU bound job : CPU만 오래 쓰는 작업(연산)
 - CPU 스케줄링 필요성 : I/O bound job의 경우 사람과 interaction하는 job으로 사용자 경험을 위해 CPU를 우선적으로 할당할 필요가 있음
 
-![프로세스의 특성 분류](assets\특성분류.png)
+![프로세스의 특성 분류](assets/특성분류.png)
 
 
 
 #### CPU Scheduler & Dispatcher
 
-![CPU Scheduler & Dispatcher](assets\S&D.png)
+![CPU Scheduler & Dispatcher](assets/S&D.png)
 
 - CPU Scheduler : 누구한테 CPU를 줄 것인가
 

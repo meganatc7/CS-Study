@@ -12,7 +12,7 @@
 
 #### Scheduling Algorithm
 
-![algo](assets\algo.png)
+![algo](assets/algo.png)
 
 ##### FCFS 
 
@@ -32,7 +32,7 @@
 
 - ready queue를 여러 줄로 분할
 
-![multilevel](assets\multilevel(2).png)
+![multilevel](assets/multilevel(2).png)
 
 - 위에 있을 수록 우선순위가 높음(계급제)
 
@@ -44,7 +44,7 @@
 
   - 우선 순위가 높은 줄이 비어있지 않다면 무조건적으로 높은 계급에게만 CPU를 할당할 것인가?(starvation 발생 가능)
 
-  - ![multilevel](assets\multilevel.png)
+  - ![multilevel](assets/multilevel.png)
 
     - ready queue를 여러 개로 분할
 
@@ -66,9 +66,9 @@
 
 #####  Multilevel Feedback Queue
 
-![multilevel](assets\multilevel(5).png)
+![multilevel](assets/multilevel(5).png)
 
-![multilevel](assets\multilevel(4).png)
+![multilevel](assets/multilevel(4).png)
 
 - Multilevel Queu와 마찬가지로 ready queue가 여러 줄로 분할되지만, 출신 변경이 가능
 
@@ -99,7 +99,7 @@
 
 ##### Multi-Processor Scheduling(CPU가 여러개 있는 경우)
 
-![Multi-Processor](assets\multiple.png)
+![Multi-Processor](assets/multiple.png)
 
 - Homogenous processor : 한 줄로 세워 처리
   - 특정 job이 특정 CPU에서 수행되어야 할 경우에는 주로 먼저 할당한 다음 스케줄링 진행
@@ -114,7 +114,7 @@
 
 ##### Real-Time Scheduling
 
-![real-time](assets\real-time.png)
+![real-time](assets/real-time.png)
 
 - real time job : deadline이 정해져있는 잡(정해진 시간 내에 반드시 실행되어야 함)
 - CPU 스케줄링 시 데드라인 보장 Need
@@ -127,7 +127,7 @@
 
 ##### Tread Sceduling
 
-![thread](assets\thread.png)
+![thread](assets/thread.png)
 
 - cf. 스레드: 프로세스 하나에 여러 개의 CPU 수행 단위가 있는 것
 - Local Scheduling
@@ -143,7 +143,7 @@
 
 어떤 알고리즘이 좋은지 평가할 수 있는 방법
 
-![algo_eval](assets\eval.png)
+![algo_eval](assets/eval.png)
 
 1. Queueing models(이론적인 방법)
 
@@ -164,14 +164,14 @@
 
 ##### 데이터의 접근
 
-![data](assets\data.png)
+![data](assets/data.png)
 
 - 데이터는 자신이 저장된 곳에서 값을 가져와 연산하고 다시 결과를 저장하는 등의 과정 수행
 - 데이터에 대해 연산, 수정, 결과 저장 등을 진행하는데 프로세스에 따라 그 결과값들이 달라질 수 있음 => system Synchronization
 
 <hr>
 
-![race_conditoin](assets\rc.png)
+![race_conditoin](assets/rc.png)
 
 -  cpu가 여러 개인 경우 각  CPU가 다른 연산을 진행하여 원치 않는 결과가 발생할 수 있음
 -  원래는 갑시 +1 -1 => 그대로여야 하는 경우에서 +1(살짝 먼저 진행) / -1(살짝 후에 진행)이 각각 수행되서 마지막에 수행된 -1만 결과로 남을 수 있음
@@ -184,7 +184,7 @@
 
 여러 주체가 하나의 데이터에 접근하는 것
 
-![image-20210804003648823](assets\when.png)
+![image-20210804003648823](assets/when.png)
 
 
 
@@ -192,15 +192,15 @@
 
 1. 운영체제 커널이 실행 중일 경우 interrupt를 disabled 처리(커널 명령어가 끝날 때까지 보장)(순서를 정해준다)
 
-![image-20210804003700168](assets\osrc(1).png)
+![image-20210804003700168](assets/osrc(1).png)
 
 
 
 2. 커널 모드 중에는 CPU를 preempt하지 않음(시간을 조금 더 쓰더라도 빼앗지 않는다.)
 
-![image-20210804003953042](assets\osrd(2).png)
+![image-20210804003953042](assets/osrd(2).png)
 
-![osrc(2-2)](assets\osrc(2-2).png)
+![osrc(2-2)](assets/osrc(2-2).png)
 
 - 위의 예시에서는 원래 경우라면 앞의 count를 저장해 이전의 한 번 count에 ++한 값만 남는다
 
@@ -208,7 +208,7 @@
 
 3. CPU가 여러 개 있는 경우에는 lock 사용 
 
-   ![osrc(3)](assets\osrc(3).png)
+   ![osrc(3)](assets/osrc(3).png)
 
    - interrupt를 막을 수 없음(근본적으로 작업 주체가 많이 있기 때문에)
    - CPU 전체(커널 자체)에 대한 lock 걸기(비효율적)
@@ -218,14 +218,16 @@
 
 ### Process Synchronization 문제
 
-![image-20210804004342409](assets\syn.png)
+![image-20210804004342409](assets/syn.png)
 
 - 여럿이서 동시에 접근해서 발생하는 불일치적 문제
 - 순서를 정하는 매커니즘 필요
 - 동시에 접근하려는 race condition을 막기 위해 Synchronization이 필요
 
 <hr>
-![example](assets\ex.png)
+
+![example](assets/ex.png)
+
 
 
 
@@ -233,11 +235,11 @@
 
 공유 데이터를 접근하는 코드
 
-![image-20210804004646414](\assets\sc.png)
+![image-20210804004646414](assets/sc.png)
 
 - 공유데이터를 접근하는 코드 자체를 crtical section으로 한다.
 - 하나의 프로세스가 여러 crtical section에 들어가는 것을 막아야한다.
 
-![image-20210804004717763](assets\solve.png)
+![image-20210804004717763](assets/solve.png)
 
 - crtical section인가 아닌가를 판단하는 코드를 통해 다른 접근을 막아야 함

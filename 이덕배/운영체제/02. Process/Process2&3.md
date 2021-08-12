@@ -4,9 +4,9 @@
 
 #### 동기식 입출력과 비동기식 입출력
 
-![동기비동기1](assets\process2&3\동기비동기1.png)
+![동기비동기1](assets/process2&3/동기비동기1.png)
 
-![동기비동기2](assets\process2&3\동기비동기2.png)
+![동기비동기2](assets/process2&3/동기비동기2.png)
 
 - 동기식 입출력
 
@@ -20,7 +20,7 @@
 
 #### Thread
 
-![thread](assets\process2&3\thread.png)
+![thread](assets/process2&3/thread.png)
 
 - thread : 프로세스 내부에 여러 개의 CPU 수행 단위가 있는 경우
 
@@ -34,7 +34,7 @@
 
 <hr>
 
-![thread4](assets\process2&3\thread4.png)
+![thread4](assets/process2&3/thread4.png)
 
 - 1번 예시 : 웹브라우저에서 네트워크 요청(I/O 작업)을 통해 웹페이지를 읽어올 때 html의 요소 중 img와 같이 시간이 오래 걸리는 작업과 텍스트와 같이 시간이 얼마 안걸리는 작업을 함께 수행
 
@@ -44,13 +44,13 @@
 
 <hr>
 
-![thread5](assets\process2&3\thread5.png)
+![thread5](assets/process2&3/thread5.png)
 
 - 프로세스는 하나 / PCB 하나 / 스레드 여러개(CPU 관련 정보만 여러개)
 
 <hr>
 
-![benefits](assets\process2&3\benefits.png)
+![benefits](assets/process2&3/benefits.png)
 
 - 응답성: 사용자 입장에서 더 빠른 결과를 볼 수 있음(위의 웹브라우저 예시) (비동기식 입출력 개념과 이어서 생각하기)
 - 자원 공유
@@ -59,7 +59,7 @@
 
 <hr>
 
-![implementation](assets\process2&3\implements.png)
+![implementation](assets/process2&3/implements.png)
 
 - Kernel Threads : 스레드가 여러개 있다는 것을 운영체제가 알고있음
 - User Threads(라이브러리 기반): 프로세스 안에 스레가 여러 개 있다는 것을 운영체제는 모름, 유저 프로그램이 스스로 라이브러리의 도움을 받아 관리

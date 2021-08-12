@@ -6,7 +6,7 @@
 
 ## 컴퓨터 시스템의 구조
 
-![컴퓨터시스템구조](assets\컴퓨터시스템구조.png)
+![컴퓨터시스템구조](assets/컴퓨터시스템구조.png)
 
 - input과 output으로 구성
 - Memory는 CPU의 작업 공간
