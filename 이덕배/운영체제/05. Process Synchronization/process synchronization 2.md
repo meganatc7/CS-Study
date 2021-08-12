@@ -6,7 +6,7 @@
 
 ### meaning of Semaphore
 
-![Semaphores](assets\02\semaphores.png)
+![Semaphores](assets/02/semaphores.png)
 
 - semaphore
   - 멀티프로그래밍 환경에서 공유 자원에 대한 접근을 제한하는 방법
@@ -21,7 +21,7 @@
 
 ### Critical Section of n Processes
 
-![crtical section of n processes](assets\02\crticalsection.png)
+![crtical section of n processes](assets/02/crticalsection.png)
 
 - critical section에서 semaphore를 사용하면 critical section 문제 해결 가능
 - 프로그래머는 semaphore가 지원되면 P, V에 대한 연산만 진행(P, V의 구현은 시스템에서 그때그때 진행) 
@@ -31,7 +31,7 @@
 
 ### Block / Wake
 
-![block/wake](assets\02\blockwake.png)
+![block/wake](assets/02/blockwake.png)
 
 - busy wait를 방지할 수 있음
 - semaphore의 변수값(S)와 세마포어로 인해 잠들어있는 프로세스를 연결하 위한 Queue(L)
@@ -39,7 +39,7 @@
 
 
 
-![block/wake](assets\02\blockwake(2).png)
+![block/wake](assets/02/blockwake(2).png)
 
 - P 자원 획득 과정
   - 여분이 있는 경우에는 바로 획득
@@ -53,7 +53,7 @@
 
 ### Busy wait vs. Block/wakeup
 
-![better](assets\02\better.png)
+![better](assets/02/better.png)
 
 - 일반적으로 Block/wakeup이 효율적 -> CPU의 의미있는 이용률을 높일 수 있음
 
@@ -65,7 +65,7 @@
 
 ### Two types of Semaphores
 
-![types](assets\02\types.png)
+![types](assets/02/types.png)
 
 - Binary semaphore: 자원의 개수가 하나일 경우(mutual exclusion에 주로 사용)
 - Counting semaphore: semaphore 변수가 0 or 1이 아닌 경우로 자원이 여러 개 있는 경우를 의미(여분의 자원 카운팅)
@@ -74,7 +74,7 @@
 
 ### Deadlock and Starvation
 
-![dealock](assets\02\deadlock.png)
+![dealock](assets/02/deadlock.png)
 
 - Deadlock: 서로 자신의 것을 놓지 않고 상대방을 기다리며 영원한 기다림이 발생하는 경우
 
@@ -82,7 +82,7 @@
 
 - starvation 발생 가능 : 특정 친구가 무한히 기다려야 하는 경우 발생 가능
 
-  ![dining example](assets\02\dining.png)
+  ![dining example](assets/02/dining.png)
 
   
 

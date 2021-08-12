@@ -4,7 +4,7 @@
 
 ## 📑 CPU Scheduling 개념 및 지난 시간 복습
 
-![bursts](assets\bursts.png)
+![bursts](assets/bursts.png)
 
 - CPU Scheduling
 
@@ -26,7 +26,7 @@
 
 #### CPU 스케줄링을 위한 성능 척도
 
-<img src="assets\척도.png" alt="성능 척도" style="zoom:150%;" />
+<img src="assets/척도.png" alt="성능 척도" style="zoom:150%;" />
 
 - 분류
 
@@ -57,20 +57,20 @@
 
 #### CPU Scheduling Algorithms
 
-<img src="assets\알고리즘.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+<img src="assets/알고리즘.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
 ##### FCFS
 
 > First-Come First-Served
 
-<img src="assets\fcfs.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+<img src="assets/fcfs.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
 - 오는 순서대로 처리
 - ==비선점형==
 - 썩 효율적이지는 않음 => 오래 걸리는 프로세스가 CPU를 선점할 경우 비효율적
 - 앞에 어떤 프로세스가 있는가가 기다리는 시간(대기 시간)에 상당한 영향을 미침
 
-<img src="assets\fcfs(2).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+<img src="assets/fcfs(2).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
 - ==Convoy effect== : 긴 프로세스의 선점으로 인해 짧은 프로세스들이 기다리는 현상
 
@@ -80,7 +80,7 @@
 
 > Shortest-Job-First
 
-<img src="assets\sjf.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+<img src="assets/sjf.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
 - CPU를 사용하고자 하는 시간, 즉 cpu burst가 가장 짧은 프로세스에게 CPU를 주는 방식
 
@@ -92,7 +92,7 @@
 
   - nonpreemtive :  cpu 스케줄링이 이루어지는 시점 == ==cpu를 다 쓰고 나가는 시점==
 
-    <img src="assets\sjf(2).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+    <img src="assets/sjf(2).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
     |      | 처리 순서 | 대기 시간       |
     | ---- | --------- | --------------- |
@@ -103,7 +103,7 @@
 
   - preemptive : cpu 스케줄링이 이루어지는 시점 == ==새로운 프로세스가 도착하는 시점==
 
-    <img src="assets\sjf(3).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+    <img src="assets/sjf(3).png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
     |      | 처리 순서 | 사용 시간   | 대기 시간                            | 남은 시간     |
     | ---- | --------- | ----------- | ------------------------------------ | ------------- |
@@ -116,17 +116,17 @@
 
   - starvation(기아 현상) : CPU 사용 시간이 긴 프로세스는 CPU 할당을 받기까지 오랜 시간 기다려야 함
 
-    <img src="assets\problem.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+    <img src="assets/problem.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
   - 실제로 프로세스들은 자신의 CPU 사용 시간을 알기 어려음(->과거 사용 기록을 통해 추정)
 
-    <img src="assets\예측.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
+    <img src="assets/예측.png" alt="CPU Scheduling Algorithms" style="zoom:150%;" />
 
     - t : 실제 CPU 사용 시간 / 타우(τ) : CPU 예측 사용 시간
 
       <hr>
-  <img src="assets\공식.png" alt="공식" style="zoom:150%;" />
-      
+  <img src="assets/공식.png" alt="공식" style="zoom:150%;" />
+  
 - 계산 결과 => 현재를 기준으로 최근의 가중치를 높게 반영하여 계산
 
 
@@ -135,7 +135,7 @@
 
 > 우선 순위 스케줄링(우선 순위가 높은 프로세스에게 CPU 할당)
 
-![우선순위](assets\우선순위.png)
+![우선순위](assets/우선순위.png)
 
 - preemptive(더 높은 우선 순위의 프로세스 등장 시 CPU 재할당) / nonpreemptive(현재 실행 중인 프로세스에게 CPU보장) 방법 둘 다 가능
 - 리눅스와 같은 대부분의 운영체제에서 작은 숫자일 수록 높은 우선 순위를 지님
@@ -146,7 +146,7 @@
 
 ##### Round Robin(RR)
 
-![Round Robin](assets\rr.png)
+![Round Robin](assets/rr.png)
 
 - 현대적인 컴퓨터 시스템은 RR에 기반
 
@@ -163,7 +163,7 @@
   - 할당 시간이 매우 큰 경우 : ==FCFS==와 같은 역할
   - 할당 시간이 매우 작은 경우 : 빈번한 ==context switch 발생 -> overhead 발생==
 
-- ![Round Robin](assets\ex.rr.png)
+- ![Round Robin](assets/ex.rr.png)
 
   - RR은 SJF보다 ==average turnaround time/대기 시간은 길지만 응답 시간은 더 짧음==
 
@@ -171,6 +171,6 @@
 
     CPU 사용 시간이 모두 동이할 경우 좋지 않음(거의 동시에 모든 프로세스 종료 => 하나씩 실행시키면 순차적으로 빠르게 종료)
 
-- ![Round Robin](assets\ex.rr(2).png)
+- ![Round Robin](assets/ex.rr(2).png)
 
   - cf. 위는 헤테로 지니어스들로 이루어진 문제로 RR에 호의적인 예제는 아니다

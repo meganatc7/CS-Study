@@ -4,7 +4,7 @@
 
 ## 프로세스의 개념
 
-![프로세스의 개념](assets\프로세스의 개념.png)
+![프로세스의 개념](assets/프로세스의 개념.png)
 
 > 프로세스 = 실행 중인 프로그램
 >
@@ -14,7 +14,7 @@
 
 #### 프로세스의 상태
 
-![프로세스 상태도](assets\프로세스 상태도.png)
+![프로세스 상태도](assets/프로세스 상태도.png)
 
 > CPU는 매 순간 하나의 프로세스만을 잡고 있는다.
 
@@ -29,7 +29,7 @@
 - New: 프로세스가 생성중인 상태
 - Terminated: 수행(execution)이 끝난 상태
 
-![프로세스의 상태](assets\프로세스의 상태 (2).png)
+![프로세스의 상태](assets/프로세스의 상태 (2).png)
 
 - CPU는 빠르게 그리고 공유하는 자원이기 때문에 프로세스가 돌아가며 사용함
 
@@ -37,7 +37,7 @@
 
 #### PCB
 
-![pcb](assets\pcb.png)
+![pcb](assets/pcb.png)
 
 > 운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보
 
@@ -50,7 +50,7 @@
 
 #### 문맥 교환(Context Switch)
 
-![문맥 교환](assets\문맥교환.png)
+![문맥 교환](assets/문맥교환.png)
 
 > CPU는 굉장히 빠른 자원으로 프로세스들을 짧은 시간동안 CPU를 얻었다가 뺏겼다가를 하는데,
 >
@@ -60,7 +60,7 @@
 
 <hr>
 
-![문맥 교환2](assets\문맥교환2.png)
+![문맥 교환2](assets/문맥교환2.png)
 
 - - system call: 프로세스가 본인의 필요에 의해 운영체제를 호출
   - interrupt:  컨트롤러 같은 장치가 정보 전달을 목적으로 운영체제 호출
@@ -83,13 +83,13 @@
 
 Job queue(>Ready queue&&Device queue)가 가장 최상위 개념이며, Ready queue에 있으면Device queue에 없고 , Device queue에 있으면 Ready queue로 빠진다.
 
-![프로세스 스케줄링](assets\프로세스 스케줄링.png)
+![프로세스 스케줄링](assets/프로세스 스케줄링.png)
 
 
 
 #### 스케줄러
 
-![스케줄러](assets\스케줄러.png)
+![스케줄러](assets/스케줄러.png)
 
 - Long-term scheduler
   - 프로세스에게 메모리를 줄지 말지 처음에 결정
@@ -102,7 +102,7 @@ Job queue(>Ready queue&&Device queue)가 가장 최상위 개념이며, Ready qu
 
 #### 프로세스의 상태
 
-![프로세스상태](assets\프로세스상태.png)
+![프로세스상태](assets/프로세스상태.png)
 
 - Suspended : 중기 스케줄러로 인해 발생
 
@@ -114,7 +114,7 @@ Job queue(>Ready queue&&Device queue)가 가장 최상위 개념이며, Ready qu
 
 <hr>
 
-![프로세스상태도](assets\프로세스상태도.png)
+![프로세스상태도](assets/프로세스상태도.png)
 
 - 위의 running은 프로세스가 CPU를 가지고 있으면서 본인의 코드를 실행 중이며, 중간에 있는 running은 운영체제 코드가 실행 중인 상태로, 사용자 프로세스가 커널 모드에서 운영되고 있다고 표현한다.
 - 점선 아래는 외부적인 요인으로 프로세스가 얼어붙은 상태(외부에서 재개 필요)
