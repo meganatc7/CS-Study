@@ -87,19 +87,51 @@
 
 ## System Call
 
+운영 체제의 커널이 제공하는 서비스에 대해, 응용 프로그램의 요청에 따라 커널에 접근하기 위한 인터페이스
 
+즉, 커널 모드와 사용자 모드로 나뉘어 구동되는 운영체제에서 커널을 사용자 모드, 즉 프로세스가 사용할 수 있도록 해주는 기능
+
+#### 시스템 호출의 세 가지 기능
+
+1. 사용자 모드에 있는 응용 프로그램이 커널의 기능을 사용할 수 있도록 한다.
+2. 시스템 호출을 하면 사용자 모드에서 커널 모드로 바뀐다.
+3. 커널에서 시스템 호출을 처리하면 커널 모드에서 사용자 모드로 돌아가 작업을 계속한다.
+
+![https://ju-hy.tistory.com/8](https://blog.kakaocdn.net/dn/ALlGh/btquL0XgOow/qaDksq1AsUKrpZKEzSu0DK/img.png)
+
+
+
+#### 시스템 호출의 유형
+
+1. 프로세스 제어(process Control)
+   - `exec()` : 다른 프로그램의 실행
+   - `fork()` : 새 프로세스의 생성
+   - `wait()` : 자식 프로세스가 끝날 때 까지 대기
+2. 파일 조작(file manipulation)
+   - `open()`, `read()`, `write()`
+3. 장치 관리(Device Management)
+4. 정보 유지(Information maintenance)
+5. 통신(Communication)
 
 
 
 ## Interrupt
 
-### Hardware Interrupt
+### Asychronous Interrupt(Hardware Interrupt)
 
+- 비동기식 이벤트
+- 다른 하드웨어 장치가 CPU와 상관없이 발생시킴
+- keyboard event, i/O interrupt, timer ticks
 
+### Synchronous Interrupt(Software Interrupt) (Exception)
 
-### Trap(Software Interrupt)
+- 동기식 이벤트
+- 내부적으로 CPU control unit이 명령어의 실행 결과로 자주 발생시킴
+- 0으로 나누기, page fault
 
+### Trap
 
+- 실행 중인 프로그램 내에 테스트를 위해 특별한 조건을 걸어 놓은 것
 
 
 
@@ -126,3 +158,16 @@
 - 중앙처리장치(위키 백과) https://ko.wikipedia.org/wiki/%EC%A4%91%EC%95%99_%EC%B2%98%EB%A6%AC_%EC%9E%A5%EC%B9%98
 
 - 버스(컴퓨팅)(위키 백과) https://ko.wikipedia.org/wiki/%EB%B2%84%EC%8A%A4_(%EC%BB%B4%ED%93%A8%ED%8C%85)
+
+<hr>
+
+- 시스템 호출(위키 백과) https://ko.wikipedia.org/wiki/%EC%8B%9C%EC%8A%A4%ED%85%9C_%ED%98%B8%EC%B6%9C
+
+- 시스템콜이란 https://velog.io/@woo0_hooo/%EA%B8%B0%EC%88%A0%EB%A9%B4%EC%A0%91%EB%8C%80%EB%B9%84-System-Call%EC%9D%B4%EB%9E%80
+- system call이란 https://ju-hy.tistory.com/8
+
+<hr>
+
+- 인터럽트와 예외 그리고 트랩의 차이 https://donghoson.tistory.com/1
+
+- 인터럽트 https://ko.wikipedia.org/wiki/%EC%9D%B8%ED%84%B0%EB%9F%BD%ED%8A%B8
