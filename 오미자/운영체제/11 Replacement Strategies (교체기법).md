@@ -46,7 +46,7 @@
 
 
 
-- LRU Algorithm
+- LRU Algorithm (Least Recently Used)
 
   - 가장 오랫동안 참조되지 않은 page를 교체하는 알고리즘
 
@@ -61,3 +61,49 @@
   - Loop 실행에 필요한 크기보다 작은 수의 page frame이 할당된 경우, page fault 수가 급격히 증가한다. (ref string 길이가 4이고 1,2,3,4 반복되는데 page frame이 3개인 경우 계속되는 page fault) => Allocation 기법에서 해결해야한다.
 
     
+
+
+
+- LFU Algorithm (Least Frequently Used)
+  - 가장 참조 횟수가 적은 page 교체 => page 참조시마다 참조 횟수를 누적시켜야 한다.
+  - Locality를 활용한다. -> LRU 대비 적은 overhead를 가진다.
+  - 최근 적재된 참조될 가능성이 높은 page가 교체될 가능성이 있고, 여전히 참조 횟수를 누적해야 한다(overhead)는 단점이 있다.
+
+
+
+- NUT Algorithm(Not Used Recently)
+  - LRU approximation scheme: LRU보다 적은 overhead로 비슷한 성능을 달성하는 것이 목적이다.
+  - Bit vector를 사용한다
+    - Reference bit vector(r): 참조가 되었던 page인지?
+    - Update bit vector(m): 업데이트가 발생한 page인지? => 업데이트가 발생했다면 write-back 필요
+  - 교체 우선순위 (r,m)
+    - (0,0)
+    - (0,1) 
+    - (1,0)
+    - (1,1)
+
+
+
+- Clock Algorithm
+  - ![clock 알고리즘](img/clock%20%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98.PNG)
+  - IBM VM/370 OS
+  - Reference bit 사용 -> 주기적인 초기화가 아닌 Pointer를 돌리면서 교체 page를 결정 및 초기화한다.
+    - 현재 가리키고 있는 page의 reference bit(r)를 확인한다.
+    - r == 0인 경우, 교체 page로 결정한다.
+    - r == 1인경우, reference bit 초기화 후 pointer를 이동한다.
+  - 먼저 적재된 page가 교체될 가능성이 높다.(FIFO와 유사)
+  - Reference bit를 사용하여서 교체 페이지를 결정한다. (LRU or NUR 과 유사 => locality 반영)
+
+
+
+- Second Chance Algorithm
+  - ![second-chance](img/second-chance.PNG)
+  - Clock algorithm과 유사하지만, Update bit도 함께 고려된다.
+
+  - 현재 가리키고 있는 page의 (r,m)을 확인한다.
+
+    - (0,0) => 교체 page로 결정
+
+    - (0,1) => (0,0)로 변경, write-back list에 추가후 이동한다.
+    - (1,0) => (0,0)로 변경 후 이동
+    - (1,1) => (0,1)로 변경 후 이동
